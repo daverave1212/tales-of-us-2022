@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Locked.mp3-ff0558c39e0fc4fa9774f4aca360771a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Locked.mp3"
+dest_files=[ "res://.import/Locked.mp3-ff0558c39e0fc4fa9774f4aca360771a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

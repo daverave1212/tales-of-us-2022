@@ -798,6 +798,19 @@ public static class Utils
 		}
 		return nodes.ToArray();
 	}
+	
+	public static void AddSpriteAlpha(CanvasItem s, float alpha)
+	{
+		var mod = s.Modulate;
+		var newModulate = new Color(mod.r, mod.g, mod.b, mod.a + alpha);
+		s.Modulate = newModulate;
+	}
+	public static void SetSpriteAlpha(CanvasItem s, float alpha)
+	{
+		var mod = s.Modulate;
+		var newModulate = new Color(mod.r, mod.g, mod.b, alpha);
+		s.Modulate = newModulate;
+	}
 
 
 	#region Backend

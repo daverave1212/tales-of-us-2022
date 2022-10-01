@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CardOff.mp3-abd0c0f77cdee74f5f6f19a8ee2bd66b.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/CardOff.mp3"
+dest_files=[ "res://.import/CardOff.mp3-abd0c0f77cdee74f5f6f19a8ee2bd66b.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

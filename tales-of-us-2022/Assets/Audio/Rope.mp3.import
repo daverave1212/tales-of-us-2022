@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Rope.mp3-6a4987f13288242a0f1476c5e385a4fb.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Rope.mp3"
+dest_files=[ "res://.import/Rope.mp3-6a4987f13288242a0f1476c5e385a4fb.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

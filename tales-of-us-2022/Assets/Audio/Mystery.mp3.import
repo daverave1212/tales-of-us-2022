@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Mystery.mp3-76c80e376ff5ff2c214883809a2778ee.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Mystery.mp3"
+dest_files=[ "res://.import/Mystery.mp3-76c80e376ff5ff2c214883809a2778ee.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

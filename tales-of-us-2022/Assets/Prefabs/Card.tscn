@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Assets/Cards/KidsSnow.png" type="Texture" id=1]
 [ext_resource path="res://Assets/Card.cs" type="Script" id=2]
+[ext_resource path="res://Assets/Other/CardShadow.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Other/CardGlow.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Prefabs/Flipper.cs" type="Script" id=5]
+[ext_resource path="res://Assets/Prefabs/FadeableComponent.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Other/WhiteCardOverlay.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Other/ExtraBorder6.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Other/ExtraBorder.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 392.5, 543.75 )
@@ -11,9 +18,25 @@ radius = 36.0
 
 [node name="Card" type="Sprite"]
 position = Vector2( -923, 994 )
+scale = Vector2( 1.25, 1.25 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 CardName = "K"
+
+[node name="ExtraBorder" type="Sprite" parent="."]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 9 )
+
+[node name="ExtraBorder2" type="Sprite" parent="."]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 8 )
+
+[node name="WhiteCardOverlay" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 7 )
+
+[node name="FadeableComponent" parent="WhiteCardOverlay" instance=ExtResource( 6 )]
 
 [node name="CardArea2D" type="Area2D" parent="."]
 
@@ -26,4 +49,17 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MouseArea2D"]
 shape = SubResource( 2 )
 
+[node name="Shadow" type="Sprite" parent="."]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 3 )
+
+[node name="Glow" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+texture = ExtResource( 4 )
+
+[node name="Flipper" type="Node" parent="."]
+script = ExtResource( 5 )
+
 [connection signal="input_event" from="CardArea2D" to="." method="_on_Area2D_input_event"]
+[connection signal="mouse_entered" from="CardArea2D" to="." method="_on_CardArea2D_mouse_entered"]
+[connection signal="mouse_exited" from="CardArea2D" to="." method="_on_CardArea2D_mouse_exited"]

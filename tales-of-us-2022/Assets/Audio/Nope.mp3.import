@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Nope.mp3-488528cf2c93ab3d4c14dc0de88fe00a.mp3str"
+
+[deps]
+
+source_file="res://Assets/Audio/Nope.mp3"
+dest_files=[ "res://.import/Nope.mp3-488528cf2c93ab3d4c14dc0de88fe00a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
