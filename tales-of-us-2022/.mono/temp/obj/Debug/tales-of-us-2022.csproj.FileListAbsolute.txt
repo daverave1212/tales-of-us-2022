@@ -1,0 +1,8 @@
+C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.csprojAssemblyReference.cache
+C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.csproj.CoreCompileInputs.cache
+C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.AssemblyInfoInputs.cache
+C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.AssemblyInfo.cs
+C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\bin\Debug\tales-of-us-2022.dll
+C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\bin\Debug\tales-of-us-2022.pdb
+C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.dll
+C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.pdb
