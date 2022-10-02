@@ -6,3 +6,12 @@ C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\bin
 C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\bin\Debug\tales-of-us-2022.pdb
 C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.dll
 C:\Work\GitHub\tales-of-us-2022\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.pdb
+C:\Users\Attrom\Desktop\tale_of_us\tales-of-us-2022\tales-of-us-2022\.mono\temp\bin\Debug\tales-of-us-2022.dll
+C:\Users\Attrom\Desktop\tale_of_us\tales-of-us-2022\tales-of-us-2022\.mono\temp\bin\Debug\tales-of-us-2022.pdb
+C:\Users\Attrom\Desktop\tale_of_us\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.csproj.AssemblyReference.cache
+C:\Users\Attrom\Desktop\tale_of_us\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Attrom\Desktop\tale_of_us\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.AssemblyInfoInputs.cache
+C:\Users\Attrom\Desktop\tale_of_us\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.AssemblyInfo.cs
+C:\Users\Attrom\Desktop\tale_of_us\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.csproj.CoreCompileInputs.cache
+C:\Users\Attrom\Desktop\tale_of_us\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.dll
+C:\Users\Attrom\Desktop\tale_of_us\tales-of-us-2022\tales-of-us-2022\.mono\temp\obj\Debug\tales-of-us-2022.pdb
