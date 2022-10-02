@@ -77,6 +77,15 @@ public class Board : Node2D
 			card2.Remove();
 			CreateCardInHand("Lock Pick");
 			ShowMessage("Aha! You can open doors with that!");
+		} else if (areNames("Knife", "Old Lady")) {
+			S.PlayAudio("Nope.mp3");
+			ShowMessage("An instinct tells you that you need her.");
+		} else if (areNames("Rope", "Old Lady")) {
+			S.PlayAudio("Nope.mp3");
+			ShowMessage("Don't ever think about that again!");
+		} else if (areNames("Rope", "Knife")) {
+			S.PlayAudio("Nope.mp3");
+			ShowMessage("It wouldn't be wise to cut it any further");
 		} else if (areNames("Lock Pick", "House")) {
 			S.PlayAudio("Unlock.mp3");
 			card1.SlideToHand("Knife", () => {
@@ -87,7 +96,6 @@ public class Board : Node2D
 			ShowMessage("It clicks and opens...");
 			CreateCardOnBoard("Cauldron");
 			CreateCardOnBoard("Old Coin");
-			CreateCardOnBoard("Bottle");
 		} else if (areNames("Rope", "Cauldron")) {
 			card1.Remove();
 			card2.Remove();
@@ -106,24 +114,44 @@ public class Board : Node2D
 			card2.Remove();
 			SU.PlayAudio("Success.mp3");
 			CreateCardOnBoard("Old Lady");
-			ShowMessage("Thank you!");
+			ShowMessage("'Thank you! Now I can offer you the water you need...'");			
+			CreateCardInHand("Bottle");
 			D.DoAfter(3f, () => {
-				ShowMessage("Now, drink from the water of the after.");	
-				D.DoAfter(5.5f, () => {
-					ShowMessage("Forget your old life...");
-					D.DoAfter(3.5f, () => {
-						ShowMessage("Forget your family...");
-						D.DoAfter(3.5f, () => {
-							ShowMessage("And pass away, onward...");
-							D.DoAfter(4.5f, () => {
-								S.PlayAudio("Transition.mp3");
-								WhiteTransition(() => {
-									ChangeBackground("DesertBackground.png");
-									SetBoard(new[] { "Rabid Dog", "Sign", "Merchant", "Fire Place" });
-									D.DoAfter(1.5f, () => {
-										ShowMessage("A crossroad! Which way?");
+				ShowMessage("'Drink it and you will begin a new journey...'");	
+				D.DoAfter(3f, () => {
+					ShowMessage("'One without the burden of the old.'");
+					if (Progress.IsCoinStolen == false) {
+						D.DoAfter(3f, () => {
+							ShowMessage("'And take this with you, honest soul, you will need it.'");
+							var board = GetNode<Node>("CardsOnBoard");
+							var cardsOnBoard = Utils.GetAllChildren(board);
+							for (var i = 0; i < cardsOnBoard.Length; i++)
+							{
+								var mcard = (Card) cardsOnBoard[i];
+								if(mcard.CardName == "Old Coin"){
+									mcard.SlideToHand("Old Coin", () => {
+										CreateCardInHand("Old Coin");
 									});
-								});
+									mcard.Remove();
+									break;
+								}
+							}
+						});
+					}
+				});
+			});
+		} else if (areNames("Old Lady", "Bottle")) {
+			ShowMessage("'You don't want it? But you must...'");
+			D.DoAfter(4f, () => {
+				ShowMessage("'Why, you ask. Why live if you can't keep anything?'");
+				D.DoAfter(4.5f, () => {
+					ShowMessage("'...not even your memories?'");
+					D.DoAfter(4.5f, () => {
+						ShowMessage("'Oh little soul, in life you change the fate of so many...'");
+						D.DoAfter(4.5f, () => {
+							ShowMessage("'and you keep on living in their hearts.'");
+							D.DoAfter(4f, () => {
+								ShowMessage("'And what lies ahead for you is a beginning, not an end.'");
 							});
 						});
 					});
@@ -141,12 +169,16 @@ public class Board : Node2D
 			ShowMessage("The dog is free. Take the 'leash'.");
 			card1.SlideToHand("Knife", () => {
 				CreateCardInHand("Knife");
-				CreateCardInHand("Rope");				
+				CreateCardInHand("Rope");
 			});
 			card1.Remove();
 			card2.Remove();
 		} else if (areNames("Rabid Dog", "Knife")) {
+			S.PlayAudio("Nope.mp3");
 			ShowMessage("You should not try that, lest you get bitten.");
+		} else if (areNames("Rabid Dog", "Flute")) {
+			S.PlayAudio("Nope.mp3");
+			ShowMessage("That sound! Only seems to anger it, and everyone around");
 		} else if (areNames("Sign", "Fire Place")) {
 			card1.SlideToHand("Torch", () => {
 				CreateCardInHand("Torch");
@@ -185,21 +217,25 @@ public class Board : Node2D
 					ChangeBackground("Black.png");
 					ClearBoard();
 					D.DoAfter(1.5f, () => {
-						ShowMessage("You poor, poor soul...");
+						ShowMessage("To be continued...");
 					});
 				});
 			});
 		} else if (areNames("Flute", "Fire Place")) {
-			ShowMessage("An unusual way to use a flute. If it sits, it fits.");
-			card1.SlideToHand("Torch", () => {
-				CreateCardInHand("Torch");
-			});
-			card1.Remove();
-			card2.Remove();
-			CreateCardOnBoard("Fire Place");
+			if (Progress.IsMerchantGone == false) {
+				S.PlayAudio("Nope.mp3");
+				ShowMessage("You wouldn't burn it in front of its maker");
+			}
+			else {
+				ShowMessage("An unusual way to use a flute. If it sits, it fits.");
+				card1.SlideToHand("Torch", () => {
+					CreateCardInHand("Torch");
+				});
+				card1.Remove();
+				card2.Remove();
+				CreateCardOnBoard("Fire Place");
+			}
 		}
-		
-		
 		else {
 			S.PlayAudio("Nope.mp3");
 		}
@@ -274,17 +310,39 @@ public class Board : Node2D
 			}
 		} else if (name == "Rope") {
 			ShowMessage("You were stabbed, not hanged");
+		} else if (name == "Bottle" ) {
+			ShowMessage("Forget your old life...");
+			D.DoAfter(3.5f, () => {
+				ShowMessage("Forget your family...");
+				D.DoAfter(3.5f, () => {
+					ShowMessage("And pass away, onward...");
+					D.DoAfter(4.5f, () => {
+						card.Remove();
+						S.PlayAudio("Transition.mp3");
+						WhiteTransition(() => {
+							ChangeBackground("DesertBackground.png");
+							SetBoard(new[] { "Rabid Dog", "Sign", "Merchant", "Fire Place" });
+							D.DoAfter(1.5f, () => {
+								ShowMessage("A crossroad! Which way?");
+							});
+						});
+					});
+				});
+			});
 		} else if (name == "Hair Pin") {
 			ShowMessage("She gave you her hair pin.");
 		} else if (name == "Old Coin") {
 			S.PlayAudio("Coin.mp3");
-			if (card.IsOnBoard())
+			if (card.IsOnBoard()){
+				Progress.IsCoinStolen = true;
 				card.GiveSelf();
-			ShowMessage("She won't notice it missing...");
-		} else if (name == "Bottle") {
-			if (card.IsOnBoard())
-				card.GiveSelf();
-			ShowMessage("An empty bottle.");
+			}
+			if (Progress.IsCoinStolen){
+				ShowMessage("She won't notice it missing...");
+			}
+			else {
+				ShowMessage("You feel connected with all its previous owners.");
+			}
 		} else if (name == "Cauldron") {
 			ShowMessage("Cold. Has not been used in years.");
 		} else if (name == "Water Bucket") {
@@ -305,7 +363,7 @@ public class Board : Node2D
 		} else if (name == "Merchant") {
 			if (Progress.HasFlute == false) {
 				if (Progress.MerchantCounter == 0) {
-					ShowMessage("'I greet you, traveler.");
+					ShowMessage("'I greet you, traveler.'");
 				} else if (Progress.MerchantCounter == 1) {
 					ShowMessage("'I am the afterworld merchant.'");
 				} else {
@@ -313,18 +371,41 @@ public class Board : Node2D
 				}
 			} else {
 				if (Progress.MerchantCounter == 0) {
-					ShowMessage("'Oh, do you want me gone?");
+					ShowMessage("'What else could you offer me?'");
 				} else if (Progress.MerchantCounter == 1) {
-					ShowMessage("'But I like it here...'");
+					ShowMessage("*looks at you with interest, he measures you*");
 				} else {
-					ShowMessage("'Fine. Happy afterlife!'");
-					card.Remove();
-					CreateCardOnBoard("Cloth");
+					ShowMessage("'I could trade a few coins for that soul of yours.'");
 				}
 			}
 			Progress.MerchantCounter++;
 		} else if (name == "Mist") {
 			ShowMessage("Mist so dense... you will surely get lost.");
+		} else if (name == "Flute") {
+			if (Progress.IsMerchantGone == false){
+				ShowMessage("Awful! That is a tool of torture for ears!");
+				D.DoAfter(2.5f, () => {
+					var board = GetNode<Node>("CardsOnBoard");
+					var cardsOnBoard = Utils.GetAllChildren(board);
+					for (var i = 0; i < cardsOnBoard.Length; i++)
+					{
+						var mcard = (Card) cardsOnBoard[i];
+						if(mcard.CardName == "Merchant"){
+							mcard.Remove();
+							break;
+						}
+					}
+					ShowMessage("He vanished...");
+					Progress.IsMerchantGone = true;
+					D.DoAfter(2.5f, () => {
+						CreateCardOnBoard("Cloth");
+						ShowMessage("It seems that he dropped something behind");
+					});
+				});
+			}
+			else {
+				ShowMessage("You are hurting yourself");
+			}
 		} else if (name == "Cliff") {
 			ShowMessage("Cliff so steep... don't fall.");
 		} else if (name == "Cloth") {
